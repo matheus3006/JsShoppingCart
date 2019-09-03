@@ -60,7 +60,7 @@ class UI {
   }
   getBagButtons(){
     const buttons = [...document.querySelectorAll('.bag-btn')];
-    
+    buttonDOM = buttons;
     buttons.forEach(button => {
       let id  = button.dataset.id;
       let inCart  = cart.find(item => item.id === id);
@@ -88,6 +88,10 @@ class UI {
 class Storage {
   static saveProducts(products){
     localStorage.setItem('products',JSON.stringify(products));
+  }
+  static getProduct(id){
+    let products =JSON.parse(localStorage.getItem('products'));
+    return products.find(product => product.id === id);
   }
 }
 
