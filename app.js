@@ -68,18 +68,23 @@ class UI {
       if(inCart){
         button.innerText = "In Cart";
         button.disabled = true;
-      }else{
+      }
         button.addEventListener('click', (event)=>{
           event.target.innerText = "In cart";
           event.target.disabled = true;
           //get product from products
+          let cartItem  = {...Storage.getProduct(id),amount:1};
+        
           //add product to the cart
+          cart = [...cart,cartItem];
+          
           // save cart in local storage
+          
           // set cart values
           // display cart item
           //show the cart
         });
-      }
+      
     });
   }
 }
