@@ -1,3 +1,4 @@
+
 //variables
 const cartBtn = document.querySelector(".cart-btn");
 const closeCartBtn = document.querySelector(".close-cart");
@@ -60,26 +61,25 @@ class UI {
   }
   getBagButtons(){
     const buttons = [...document.querySelectorAll('.bag-btn')];
-    buttonDOM = buttons;
+    buttonsDOM = buttons;
     buttons.forEach(button => {
-      let id  = button.dataset.id;
-      let inCart  = cart.find(item => item.id === id);
+      let id = button.dataset.id;
+      let inCart = cart.find(item => item.id === id);
       if(inCart){
         button.innerText = "In Cart";
         button.disabled = true;
-      }
-        button.addEventListener('click' , (event)=>{
-          event.target.innerText  = "In Cart";
+      }else{
+        button.addEventListener('click', (event)=>{
+          event.target.innerText = "In cart";
           event.target.disabled = true;
-          // get product from products
-          // add product to the cart
-          //save cart in local storage
+          //get product from products
+          //add product to the cart
+          // save cart in local storage
           // set cart values
-          // add cart item
           // display cart item
-          // show the cart
+          //show the cart
         });
-      
+      }
     });
   }
 }
