@@ -125,7 +125,10 @@ class UI {
     this.setCartValues(cart);
     this.populateCart(cart);
     cartBtn.addEventListener('click' , this.showCart);
-    closeCartBtn.addEventListener('click' ,this.hideCart);
+    closeCartBtn.addEventListener('click' , () => {
+      cartOverlay.classList.remove('transparentBcg');
+      cartDOM.classList.remove('showCart');
+    }); 
   }
   populateCart(cart){
     cart.forEach(item =>this.addCartItem(item));
