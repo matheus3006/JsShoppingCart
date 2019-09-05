@@ -1,10 +1,10 @@
-//2:27:53 - lembrar de arrumar o bug no html que n atualiza a quantidade de item no carrinho .
+
 //variables
 const cartBtn = document.querySelector(".cart-btn");
 const closeCartBtn = document.querySelector(".close-cart");
 const cartDOM = document.querySelector(".cart");
 const cartOverlay = document.querySelector(".cart-overlay");
-const cartItemDOM = document.querySelector(".cart-items");
+const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".cart-total");
 const cartContent = document.querySelector(".cart-content");
 const productsDOM = document.querySelector(".products-center");
@@ -69,14 +69,14 @@ class UI {
         button.innerText = "In Cart";
         button.disabled = true;
       }
-        button.addEventListener('click', (event)=>{
+        button.addEventListener('click', event =>{
           event.target.innerText = "In cart";
           event.target.disabled = true;
           //get product from products
           let cartItem  = {...Storage.getProduct(id),amount:1};
         
           //add product to the cart
-          cart = [...cart,cartItemDOM];
+          cart = [...cart,cartItem];
           
           // save cart in local storage
           Storage.saveCart(cart);
@@ -85,18 +85,18 @@ class UI {
           // display cart item
           //show the cart
         });
-    });
+    })
   }
-  setCartValues (cart){
+  setCartValues(cart){
     let tempTotal = 0;
     let itemsTotal = 0;
-    cart.map(item =>{
-      tempTotal += item.price * item.amount;
-      itemsTotal += item.amount;  
-    });
-    cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
-    cartItems.innertext = itemsTotal;
-    console.log(cartTotal, cartItemDOM);
+    cart.map(item => {
+      tempTotal +=item.price * item.amount;
+      itemsTotal += item.amount;
+    })
+    cartTotal.innerText = parseFloat(tempTotal.toFixed(2))
+    cartItems.innerText = itemsTotal;
+    console.log(cartTotal,cartItems);
   }
 }
 
