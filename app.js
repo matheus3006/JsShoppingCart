@@ -1,3 +1,4 @@
+
 //variables
 const cartBtn = document.querySelector(".cart-btn");
 const closeCartBtn = document.querySelector(".close-cart");
@@ -84,7 +85,7 @@ class UI {
         // display cart item
         this.addCartItem(cartItem);
         //show the cart
-        this.showCart();
+        
       });
     });
   }
@@ -101,39 +102,22 @@ class UI {
   addCartItem(item) {
     const div = document.createElement("div");
     div.classList.add("cart-item");
-    div.innerHTML = `
-    <img src= ${item.image} alt="product">
+    div.innerHTML = 
+    `<img src= ${item.image} alt="product">
     <div>
       <h4>${item.title}</h4>
       <h5>$${item.price}</h5>
       <span class="remove-item" data-id = ${item.id} >remove</span>
     </div>
     <div>
-      <i class="fas fa-chevron-up" data-id = ${item.id}></i>
+      <i class="fas fa-chevron-up" data-id =${item.id}></i>
       <p class="item-amount" >${item.amount}</p>
-      <i class="fas fa-chevron-down" data-id = ${item.id}></i>
-    </div>
-    `;
+      <i class="fas fa-chevron-down" data-id =${item.id}></i>
+    </div>`;
     cartContent.appendChild(div);
+    
   }
-  showCart() {
-    cartOverlay.classList.add("transparentBcg");
-    cartDOM.classList.add("showCart");
-  }
-  setupAPP() {
-    cart = Storage.getCart();
-    this.setCartValues(cart);
-    this.populateCart(cart);
-    cartBtn.addEventListener("click", this.showCart);
-    closeCartBtn.addEventListener("click", this.hideCart);
-  }
-  populateCart(cart) {
-    cart.forEach(item => this.addCartItem(item));
-  }
-  hideCart() {
-    cartOverlay.classList.remove("transparentBcg");
-    cartDOM.classList.remove("showCart");
-  }
+ 
 }
 
 //local storage
@@ -158,7 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const products = new Products();
   //setup App
-  ui.setupAPP();
 
   //get all products
   products
