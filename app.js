@@ -1,10 +1,10 @@
-
+//2:27:53 - lembrar de arrumar o bug no html que n atualiza a quantidade de item no carrinho .
 //variables
 const cartBtn = document.querySelector(".cart-btn");
 const closeCartBtn = document.querySelector(".close-cart");
 const cartDOM = document.querySelector(".cart");
 const cartOverlay = document.querySelector(".cart-overlay");
-const cartItems = document.querySelector(".cart-items");
+const cartItemDOM = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".cart-total");
 const cartContent = document.querySelector(".cart-content");
 const productsDOM = document.querySelector(".products-center");
@@ -76,7 +76,7 @@ class UI {
           let cartItem  = {...Storage.getProduct(id),amount:1};
         
           //add product to the cart
-          cart = [...cart,cartItem];
+          cart = [...cart,cartItemDOM];
           
           // save cart in local storage
           Storage.saveCart(cart);
@@ -96,7 +96,7 @@ class UI {
     });
     cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
     cartItems.innertext = itemsTotal;
-    console.log(cartTotal, cartItems);
+    console.log(cartTotal, cartItemDOM);
   }
 }
 
