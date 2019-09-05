@@ -85,7 +85,7 @@ class UI {
         // display cart item
         this.addCartItem(cartItem);
         //show the cart
-        
+        this.showCart();
       });
     });
   }
@@ -115,9 +115,17 @@ class UI {
       <i class="fas fa-chevron-down" data-id =${item.id}></i>
     </div>`;
     cartContent.appendChild(div);
+  }
+  showCart(){
+    cartOverlay.classList.add('transparentBcg');
+    cartDOM.classList.add('showCart');
+  }
+  setupAPP(){
+    cart = Store.getCart();
+    this.setCartValues(cart);
     
   }
- 
+
 }
 
 //local storage
@@ -133,7 +141,7 @@ class Storage {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
   static getCart() {
-    return localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart"))
+    return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem("cart"))
       : [];
   }
 }
@@ -142,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const products = new Products();
   //setup App
-
+  ui.setupAPP(); 
   //get all products
   products
     .getProducts()
