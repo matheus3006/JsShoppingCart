@@ -121,11 +121,19 @@ class UI {
     cartDOM.classList.add('showCart');
   }
   setupAPP(){
-    cart = Store.getCart();
+    cart = Storage.getCart();
     this.setCartValues(cart);
-    
+    this.populateCart(cart);
+    cartBtn.addEventListener('click' , this.showCart);
+    closeCartBtn.addEventListener('click' ,this.hideCart);
   }
-
+  populateCart(cart){
+    cart.forEach(item =>this.addCartItem(item));
+  }
+  hideCart(){
+    cartOverlay.classList.remove('transparentBcg');
+    cartDOM.classList.remove('showCart');
+  }
 }
 
 //local storage
