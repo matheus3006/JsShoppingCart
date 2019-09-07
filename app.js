@@ -157,7 +157,7 @@ class UI {
         Storage.saveCart(cart);
         this.setCartValues(cart);
         addAmount.nextElementSibling.innerText = tempItem.amount;
-        //3:25?15
+        
       } else if (event.target.classList.contains("fa-chevron-down")) {
         let lowerAmount = event.target;
         let id = lowerAmount.dataset.id;
@@ -167,7 +167,7 @@ class UI {
           Storage.saveCart(cart);
           this.setCartValues(cart);
           lowerAmount.previousElementSibling.innerText = tempItem.amount;
-        } else {
+        } else{
           cartContent.removeChild(lowerAmount.parentElement.parentElement);
           this.removeItem(id);
         }
