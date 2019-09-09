@@ -5,7 +5,6 @@ const client = contentful.createClient({
   accessToken: "0VnCNlJ-cFiWDwfddWIvxwWfOOfLxDUYsPLIK2sK6T0"
 });
 
-
 //variables
 const cartBtn = document.querySelector(".cart-btn");
 const closeCartBtn = document.querySelector(".close-cart");
@@ -26,9 +25,9 @@ let buttonsDOM = [];
 class Products {
   async getProducts() {
     try {
-     let contentFull = await client.getEntries({
-       content_type: "ConfortHauseProducts"
-     });
+      let contentFull = await client.getEntries({
+        content_type: "ConfortHauseProducts"
+      });
       let products = contentFull.items;
       products = products.map(item => {
         const { title, price } = item.fields;
@@ -165,7 +164,6 @@ class UI {
         Storage.saveCart(cart);
         this.setCartValues(cart);
         addAmount.nextElementSibling.innerText = tempItem.amount;
-        
       } else if (event.target.classList.contains("fa-chevron-down")) {
         let lowerAmount = event.target;
         let id = lowerAmount.dataset.id;
@@ -175,7 +173,7 @@ class UI {
           Storage.saveCart(cart);
           this.setCartValues(cart);
           lowerAmount.previousElementSibling.innerText = tempItem.amount;
-        } else{
+        } else {
           cartContent.removeChild(lowerAmount.parentElement.parentElement);
           this.removeItem(id);
         }
